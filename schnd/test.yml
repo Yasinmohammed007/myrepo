@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: yasinmohammed007/ubuntu-kbctl:1.0.0
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/bash
+            - -c
+            - date; kubectl scale --replicas=0 deployment/nginx-deployment; sleep 60;kubectl scale --replicas=1 deployment/nginx-deployment 
+          restartPolicy: OnFailure
