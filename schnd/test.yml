@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: hello
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "0 22 * * *"
   jobTemplate:
     spec:
       template:
@@ -15,5 +15,5 @@ spec:
             command:
             - /bin/bash
             - -c
-            - date; kubectl scale --replicas=0 deployment/nginx-deployment; sleep 60;kubectl scale --replicas=1 deployment/nginx-deployment 
+            - date; kubectl scale --replicas=0 deployment/nginx-deployment;kubectl get deployments
           restartPolicy: OnFailure
