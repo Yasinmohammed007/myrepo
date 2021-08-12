@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello
+  name: servicename
 spec:
   schedule: "0 22 * * *"
   jobTemplate:
@@ -9,7 +9,7 @@ spec:
       template:
         spec:
           containers:
-          - name: hello
+          - name: servicename
             image: yasinmohammed007/ubuntu-kbctl:1.0.0
             imagePullPolicy: IfNotPresent
             command:
