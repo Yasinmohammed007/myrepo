@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nginx
+spec:
+  schedule: "*/3 * * * *"
+  jobTemplate:
+    spec:
+      selector:
+        matchLabels:
+          app: nginx
+      template:
+        metadata:
+        spec:
+          containers:
+          - name: nginx-dep
+            image: nginx:1.14.2
+            command:
+            - /bin/bash
+            - -c
+            - date; sleep 10; systemctl 
+            imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
