@@ -8,3 +8,7 @@ grep 'client-key-data' ~/.kube/config | head -n 1 | awk '{print $2}' | base64 -d
 
 ### kubecfg.p12
 openssl pkcs12 -export -clcerts -inkey kubecfg.key -in kubecfg.crt -out kubecfg.p12 -name "kubernetes-client"
+
+
+#install k8s on aws ec2 in 5min
+https://www.youtube.com/watch?v=vpEDUmt_WKA
